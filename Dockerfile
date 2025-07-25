@@ -1,14 +1,14 @@
-# استخدم نسخة Node حديثة
 FROM node:18
 
-# إنشاء مجلد داخلي
+# Create app directory
 WORKDIR /app
 
-# نسخ ملفات البوت
-COPY . .
-
-# تثبيت البكجات
+# Install app dependencies
+COPY package*.json ./
 RUN npm install
 
-# تشغيل البوت
-CMD ["npm", "start"]
+# Copy app source code
+COPY . .
+
+# Run the bot
+CMD ["node", "index.js"]
